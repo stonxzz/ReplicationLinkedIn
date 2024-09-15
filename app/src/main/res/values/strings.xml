@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">replicationLinkedIn</string>
+    <string name="user_name">Karim BELABED</string>
+    <string name="user_profession">Product Owner and Designer UX/UI I CSPO, PSM</string>
+    <string name="user_degree">GALIAN - Heriot-Watt University</string>
+    <string name="user_location">Paris, Íle-de-France, France</string>
+    <string name="user_contacts">Plus de 500 relations</string>
 </resources>

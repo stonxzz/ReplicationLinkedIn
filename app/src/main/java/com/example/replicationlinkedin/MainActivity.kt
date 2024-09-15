@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +20,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material.icons.sharp.Search
@@ -31,8 +34,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.replicationlinkedin.ui.theme.ReplicationLinkedInTheme
 
 class MainActivity : ComponentActivity() {
@@ -40,10 +47,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Column {
-                searchBar()
-                profilePhotos()
+            Column (modifier = Modifier
+                .background(Color.Gray)){
+                Column (modifier = Modifier
+                    .background(Color.White)){
+                    searchBar()
+                    profilePhotos()
+                    userInfo()
+                }
             }
+
         }
     }
 }
@@ -74,7 +87,6 @@ fun searchBar(){
 
 }
 
-@Preview(showBackground = true)
 @Composable
 fun profilePhotos(){
     Box(
@@ -90,7 +102,7 @@ fun profilePhotos(){
 
         Row(modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp, 50.dp),
+            .padding(start = 20.dp, top = 60.dp, bottom = 15.dp),
             horizontalArrangement = Arrangement.Start) {
             Image(painterResource(R.drawable.perfil),
                 contentDescription = "Imagen de perfil",
@@ -103,4 +115,90 @@ fun profilePhotos(){
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun userInfo(){
+    Column(modifier = Modifier.fillMaxWidth()
+        .padding(20.dp, 0.dp)) {
+        Text(stringResource(R.string.user_name),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier
+                .fillMaxWidth()
+        )
+        Text(stringResource(R.string.user_profession),
+            fontSize = 16.sp,
+            modifier = Modifier
+                .padding(top = 7.dp))
+        Text(stringResource(R.string.user_degree),
+            fontSize = 14.sp,
+            modifier = Modifier
+                .padding(top = 30.dp))
+        Text(stringResource(R.string.user_location),
+            color = Color.Gray,
+            fontWeight = FontWeight.Normal,
+            fontSize = 13.sp)
+        Text(stringResource(R.string.user_contacts),
+            color = Color.Gray,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 15.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Card(
+                shape = RoundedCornerShape(50), // Bordes redondeados
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .width(150.dp)
+                    .clickable {}
+            ) {
+                Text(
+                    text = "Se connecter",
+                    color = Color.White, // Texto blanco
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.Blue)
+                        .padding(30.dp, 7.dp)
+                )
+            }
+            Card(
+                shape = RoundedCornerShape(50),
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .width(140.dp)
+                    .border(1.dp, Color.Gray, CircleShape)
 
+                    .clickable{}
+            ) {
+                Text(
+                    text = "Message",
+                    color = Color.Gray,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White)
+                        .padding(40.dp,7.dp)
+                )
+            }
+            Card(
+                shape = RoundedCornerShape(50),
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .width(30.dp)
+                    .border(1.dp, Color.Gray, CircleShape)
+
+                    .clickable{}
+            ) {
+                Text(
+                    fontSize = 15.sp,
+                    text = "...",
+                    color = Color.Gray,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White)
+                        .padding(9.dp,7.dp)
+
+                )
+            }
+
+        }
+    }
+}
