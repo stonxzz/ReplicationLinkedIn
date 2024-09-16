@@ -23,14 +23,21 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material.icons.sharp.ArrowForward
+import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material.icons.sharp.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -73,11 +80,16 @@ class MainActivity : ComponentActivity() {
                     activityButton()
                 }
                 Spacer(modifier = Modifier.height(10.dp))
+                Column (modifier = Modifier.padding(top = 130.dp)
+                    .background(Color.White)){
+                    navigationBar() }
             }
 
         }
     }
 }
+
+
 
 @Composable
 fun searchBar(){
@@ -261,7 +273,6 @@ fun userActivity(){
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun activityButton(){
     Row (modifier = Modifier
@@ -275,5 +286,50 @@ fun activityButton(){
             modifier = Modifier.padding(start = 10.dp)
                 .clickable {  }
                 .size(18.dp))
+    }
+}
+
+@Composable
+fun navigationBar(){
+    Row (horizontalArrangement = Arrangement.spacedBy(26.dp),
+        modifier = Modifier
+        .padding(start = 20.dp, end = 10.dp, bottom = 10.dp)
+        .fillMaxWidth()
+        ){
+        Column {
+            Icon(Icons.Filled.Home,
+                contentDescription = "Home Icon",
+                modifier = Modifier.padding(start = 11.dp)
+                    .clickable {  })
+            Text(text = "Accueil")
+        }
+        Column {
+            Icon(Icons.Filled.Person,
+                contentDescription = "Home Icon",
+                modifier = Modifier.padding(start = 11.dp)
+                    .clickable {  })
+            Text(text = "Réseau")
+        }
+        Column {
+            Icon(Icons.Filled.AddCircle,
+                contentDescription = "Home Icon",
+                modifier = Modifier.padding(start = 11.dp)
+                    .clickable {  })
+            Text(text = "Publier")
+        }
+        Column {
+            Icon(Icons.Filled.Notifications,
+                contentDescription = "Home Icon",
+                modifier = Modifier.padding(start = 24.dp)
+                    .clickable {  })
+            Text(text = "Notifications")
+        }
+        Column {
+            Icon(Icons.Filled.MailOutline,
+                contentDescription = "Home Icon",
+                modifier = Modifier.padding(start = 11.dp)
+                    .clickable {  })
+            Text(text = "Offres")
+        }
     }
 }
