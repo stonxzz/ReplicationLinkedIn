@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -48,12 +49,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Column (modifier = Modifier
-                .background(Color.Gray)){
+                .background(Color.LightGray)){
                 Column (modifier = Modifier
                     .background(Color.White)){
                     searchBar()
                     profilePhotos()
                     userInfo()
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Column (modifier = Modifier
+                    .background(Color.White)){
+                    userDescription()
                 }
             }
 
@@ -115,11 +121,12 @@ fun profilePhotos(){
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
 fun userInfo(){
     Column(modifier = Modifier.fillMaxWidth()
-        .padding(20.dp, 0.dp)) {
+        .padding(20.dp, 0.dp)
+        .padding(bottom = 9.dp)) {
         Text(stringResource(R.string.user_name),
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
@@ -200,5 +207,20 @@ fun userInfo(){
             }
 
         }
+    }
+}
+
+@Composable
+fun userDescription(){
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(start = 20.dp, top = 5.dp, bottom = 10.dp, end = 10.dp)) {
+        Text(text = "Description",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(bottom = 10.dp))
+        Text(stringResource(R.string.user_description),
+            fontSize = 14.sp)
     }
 }
