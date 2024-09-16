@@ -80,7 +80,12 @@ class MainActivity : ComponentActivity() {
                     activityButton()
                 }
                 Spacer(modifier = Modifier.height(10.dp))
-                Column (modifier = Modifier.padding(top = 130.dp)
+                Column (modifier = Modifier
+                    .background(Color.White)){
+                    userAcerca()
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Column (modifier = Modifier.padding(top = 0.dp)
                     .background(Color.White)){
                     navigationBar() }
             }
@@ -286,6 +291,25 @@ fun activityButton(){
             modifier = Modifier.padding(start = 10.dp)
                 .clickable {  }
                 .size(18.dp))
+    }
+}
+
+@Composable
+fun userAcerca(){
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(start = 20.dp, top = 5.dp, bottom = 10.dp, end = 10.dp)) {
+        Text(text = "Acerca de",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(bottom = 1.dp))
+        Text(text = "18 Años de experiencia",
+            fontSize = 12.sp,
+            color = Color.Gray,
+            modifier = Modifier.padding(bottom = 10.dp))
+        Text(stringResource(R.string.user_acerca),
+            fontSize = 14.sp)
     }
 }
 
