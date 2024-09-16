@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ArrowBack
+import androidx.compose.material.icons.sharp.ArrowForward
 import androidx.compose.material.icons.sharp.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -61,6 +62,17 @@ class MainActivity : ComponentActivity() {
                     .background(Color.White)){
                     userDescription()
                 }
+                Spacer(modifier = Modifier.height(10.dp))
+                Column (modifier = Modifier
+                    .background(Color.White)){
+                    userActivity()
+                }
+                Spacer(modifier = Modifier.height(1.dp))
+                Column (modifier = Modifier
+                    .background(Color.White)){
+                    activityButton()
+                }
+                Spacer(modifier = Modifier.height(10.dp))
             }
 
         }
@@ -222,5 +234,46 @@ fun userDescription(){
                 .padding(bottom = 10.dp))
         Text(stringResource(R.string.user_description),
             fontSize = 14.sp)
+    }
+}
+
+@Composable
+fun userActivity(){
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(start = 20.dp, top = 5.dp, bottom = 10.dp, end = 10.dp)) {
+        Text(text = "Activité",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(bottom = 1.dp))
+        Text(text = "513 abonnés",
+            fontSize = 12.sp,
+            color = Color.Gray,
+            modifier = Modifier.padding(bottom = 10.dp))
+        Text(text = "Karim ,n´a rien publié dernierement",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp,
+            modifier = Modifier
+                .padding(bottom = 1.dp))
+        Text(stringResource(R.string.user_activity),
+            fontSize = 14.sp)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun activityButton(){
+    Row (modifier = Modifier
+        .fillMaxWidth()
+        .padding(start = 110.dp, top = 10.dp)){
+        Text(text = "Afficher toute I´activité",
+            color = Color.Gray,
+            modifier = Modifier)
+        Icon(Icons.Sharp.ArrowForward,
+            contentDescription = "Icon Arrow Forward",
+            modifier = Modifier.padding(start = 10.dp)
+                .clickable {  }
+                .size(18.dp))
     }
 }

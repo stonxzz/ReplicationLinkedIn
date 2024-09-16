@@ -6,4 +6,5 @@
     <string name="user_location">Paris, Íle-de-France, France</string>
     <string name="user_contacts">Plus de 500 relations</string>
     <string name="user_description">I am a Scrum qualified Product Owner and Designer highly experienced in business transformation, digital strategy, and design.</string>
+    <string name="user_activity">Les derniers posts et commentaries de Karims´afficheront ici.</string>
 </resources>
