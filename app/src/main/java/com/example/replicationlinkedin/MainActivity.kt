@@ -282,7 +282,7 @@ fun userActivity(){
 fun activityButton(){
     Row (modifier = Modifier
         .fillMaxWidth()
-        .padding(start = 110.dp, top = 10.dp)){
+        .padding(start = 110.dp, top = 10.dp, bottom = 8.dp)){
         Text(text = "Afficher toute I´activité",
             color = Color.Gray,
             modifier = Modifier)
